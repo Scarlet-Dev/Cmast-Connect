@@ -4,6 +4,7 @@
   "description": "Main directory for node-js project",
   "main": "main.js",
   "scripts": {
+    "preinstall": "(cd cms && npm install && cd .. && cd student-portal && npm install);",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
