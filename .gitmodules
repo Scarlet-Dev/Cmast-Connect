@@ -1,0 +1,6 @@
+[submodule "student-portal"]
+	path = student-portal
+	url = https://github.com/Scarlet-Dev/Cmast-Connect-Student-Portal
+[submodule "cms"]
+	path = cms
+	url = https://github.com/Scarlet-Dev/Cmast-Connect-CMS
