@@ -1,0 +1,64 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "defaultDestination": "wwwroot/",
+  "libraries": [
+    {
+      "library": "dropzone@5.7.0",
+      "provider": "cdnjs",
+      "destination": "wwwroot/lib/dropzone/",
+      "files": [
+        "dropzone.min.js.map",
+        "dropzone.min.js",
+        "dropzone.js"
+      ]
+    },
+    {
+      "library": "quill@1.3.7",
+      "provider": "cdnjs",
+      "destination": "wwwroot/lib/quill/",
+      "files": [
+        "quill.core.js",
+        "quill.js",
+        "quill.min.js",
+        "quill.core.min.js"
+      ]
+    },
+    {
+      "library": "quill@1.3.7",
+      "provider": "cdnjs",
+      "destination": "wwwroot/css/quill/",
+      "files": [
+        "quill.core.css",
+        "quill.core.min.css",
+        "quill.core.min.css.map"
+      ]
+    },
+    {
+      "library": "video.js@7.8.1",
+      "provider": "cdnjs",
+      "destination": "wwwroot/lib/video.js/",
+      "files": [
+        "video.js",
+        "video.min.js",
+        "alt/video.core.js",
+        "alt/video.core.min.js",
+        "lang/en.js"
+      ]
+    },
+    {
+      "library": "video.js@7.8.1",
+      "provider": "cdnjs",
+      "destination": "wwwroot/css/video.js/",
+      "files": [
+        "video-js.css",
+        "video-js.min.css",
+        "alt/video-js-cdn.css",
+        "alt/video-js-cdn.min.css",
+        "font/VideoJS.svg",
+        "font/VideoJS.ttf",
+        "font/VideoJS.woff"
+      ]
+    }
+  ]
+}
