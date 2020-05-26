@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -24,6 +24,9 @@ namespace CMASTConnect.DTO.Models
 
         [DataType(DataType.Password)]
         public string Password { get; set;  }
+
+        [DataType(DataType.Text)]
+        public string UserType { get; set; }
 
         public List<UserClaims> Claims { get; }
 
