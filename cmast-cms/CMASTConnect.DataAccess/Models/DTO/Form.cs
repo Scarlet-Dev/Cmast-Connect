@@ -7,9 +7,9 @@ using System.Text;
 namespace CMASTConnect.DataAccess.Models.DTO
 {
     /// <summary>
-    /// Basic Form Template Model. Will be stored in MongoDB
+    /// Basic Form Model. Will be stored in MongoDB
     /// </summary>
-    public class FormTemplate
+    public class Form
     {
         
         public int Id { get; set; }
