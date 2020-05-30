@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,23 +12,20 @@ namespace CMASTConnect.DTO.Models
     /// </summary>
     public class User
     {
-        [Required, Key]
         public int Id { get; set; }
 
-        [Required]
         public string Username { get; }
 
-        [DataType(DataType.EmailAddress)]
         public string EmailAddress { get; set; }
 
-        [DataType(DataType.Password)]
         public string Password { get; set;  }
 
-        [DataType(DataType.Text)]
+        public DateTime PasswordExpiration { get; set; }
+
         public string UserType { get; set; }
 
-        public List<UserClaims> Claims { get; }
+        public List<UserPermissions> Permissions { get; }
 
-        public DateTime ExpirationDate { get; set; }
+        public DateTime AccountExpiration { get; set; }
     }
 }
