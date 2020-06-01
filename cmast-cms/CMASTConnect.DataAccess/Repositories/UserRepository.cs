@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using CMASTConnect.DataAccess.Interfaces;
-using CMASTConnect.DTO.Models;
+using CMASTConnect.Interfaces.IRepositories;
+using CMASTConnect.Models.DTO;
+using CMASTConnect.Models.Search;
 
-namespace CMASTConnect.DataAccess.Repositories
+namespace CMASTConnect.Repositories
 {
-    public class UserRepository : IUserRepository<User>
+    public class UserRepository : IUserRepository<User, UserSearch>
     {
         private bool disposedValue;
 
