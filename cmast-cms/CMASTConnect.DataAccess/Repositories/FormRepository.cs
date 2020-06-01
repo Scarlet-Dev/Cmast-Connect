@@ -1,21 +1,25 @@
-﻿using CMASTConnect.DataAccess.Interfaces.IRepositories;
-using CMASTConnect.DataAccess.Models.DTO;
+﻿using CMASTConnect.Interfaces.IRepositories;
+using CMASTConnect.Models.DTO;
+using CMASTConnect.Models.Models.Search;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace CMASTConnect.DataAccess.Repositories
 {
-    class FormRepository : IFormRepository<Form>
+    class FormRepository : IFormRepository<Form, FormSearch>
     {
         private bool disposedValue;
 
-        public FormRepository()
-        {
+        public Guid OperationId => throw new NotImplementedException();
 
+        public Task<int> DeleteRow(int id)
+        {
+            throw new NotImplementedException();
         }
 
-        public void DeleteRow(int id)
+        public Task<IList<Form>> Filter(FormSearch filters)
         {
             throw new NotImplementedException();
         }
@@ -25,12 +29,22 @@ namespace CMASTConnect.DataAccess.Repositories
             throw new NotImplementedException();
         }
 
-        public List<Form> SearchTable(string name)
+        public string PublishForm(Form model)
         {
             throw new NotImplementedException();
         }
 
-        public List<Form> SearchTable(string name, int id)
+        public Task<IList<Form>> SearchTable()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IList<Form>> SearchTable(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string UnPublishForm(Form model)
         {
             throw new NotImplementedException();
         }
@@ -67,26 +81,6 @@ namespace CMASTConnect.DataAccess.Repositories
             // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
             Dispose(disposing: true);
             GC.SuppressFinalize(this);
-        }
-
-        public string PublishForm(Form form)
-        {
-            throw new NotImplementedException();
-        }
-
-        public string UnPublishForm(Form form)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IList<Form> Filter()
-        {
-            throw new NotImplementedException();
-        }
-
-        public IList<Form> Query()
-        {
-            throw new NotImplementedException();
         }
     }
 }
