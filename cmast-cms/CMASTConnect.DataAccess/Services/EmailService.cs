@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CMASTConnect.Services
 {
-    class EmailService : IEmailService<Email>
+    public class EmailService : IEmailService<Email>
     {
         private bool disposedValue;
         private Guid _guid;
