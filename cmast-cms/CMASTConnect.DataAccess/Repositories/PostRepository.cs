@@ -1,28 +1,52 @@
-﻿using CMASTConnect.DataAccess.Interfaces;
-using CMASTConnect.DTO.Models;
-using Dapper;
+﻿using CMASTConnect.Models.Search;
+using CMASTConnect.Interfaces.IRepositories;
+using CMASTConnect.Models.DTO;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Common;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace CMASTConnect.DataAccess.Repositories
 {
-    class PostRepository : IPostRepository<Post>
+
+    public class PostRepository : IPostRepository<Post, PostSearch>
     {
+        private Guid _guid;
         private bool disposedValue;
 
-        public PostRepository()
+        public Guid OperationId => _guid;
+
+        public PostRepository() : this(Guid.NewGuid()) 
         {
         }
 
-        public void DeleteRow(int id)
+        public PostRepository(Guid guid)
         {
-            throw new NotImplementedException();
+            this._guid = guid;
         }
 
-        public IList<Post> Filter()
+        public async Task<int> DeleteRow(int id)
         {
-            throw new NotImplementedException();
+            var command = new MySqlCommand($"delete from Post where id = ${id}");
+            var reader = await command.ExecuteReaderAsync();
+
+            while (await reader.ReadAsync())
+            {
+                return reader.RecordsAffected;
+            }
+
+            return 0;
+        }
+
+        public async Task<IList<Post>> Filter(PostSearch filters)
+        {
+            //var posts = await SearchTable();
+
+            return null;
         }
 
         public void InsertRow(Post model)
@@ -30,22 +54,47 @@ namespace CMASTConnect.DataAccess.Repositories
             throw new NotImplementedException();
         }
 
-        public IList<Post> Query()
+        public IList<Post> Join()
         {
             throw new NotImplementedException();
         }
 
-        public List<Post> SearchTable(string name)
+        public async Task<IList<Post>> SearchTable()
         {
-            throw new NotImplementedException();
+            var results = new List<Post>();
+            var table = new DataTable();
+
+            var command = new MySqlCommand("select * from posts limit 100;");
+            var reader = await command.ExecuteReaderAsync();
+            while(await reader.ReadAsync())
+            {
+                table.Load(reader);
+                results.Add(table.Rows.Cast<Post>().First());
+            }
+            return results;
         }
 
-        public List<Post> SearchTable(string name, int id)
+        public async Task<IList<Post>> SearchTable(int id)
         {
-            throw new NotImplementedException();
+            var posts = await SearchTable();
+
+            var searchResults = posts.Where(item => item.Id == id);
+            var results = new List<Post>(searchResults);
+
+            return results;
         }
 
         public void UpdateRow(int id, Post model)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string PublishPost(Post post)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string UnPublishPost(Post post)
         {
             throw new NotImplementedException();
         }
@@ -79,14 +128,5 @@ namespace CMASTConnect.DataAccess.Repositories
             GC.SuppressFinalize(this);
         }
 
-        public string PublishPost(Post post)
-        {
-            throw new NotImplementedException();
-        }
-
-        public string UnPublishPost(Post post)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
