@@ -1,4 +1,4 @@
-﻿namespace CMASTConnect.DataAccess.Models
+﻿namespace CMASTConnect.Models
 {
     enum UserTypes
     {

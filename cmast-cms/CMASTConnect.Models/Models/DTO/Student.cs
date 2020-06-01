@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CMASTConnect.DataAccess.Models.DTO
+namespace CMASTConnect.Models.DTO
 {
     public class Student
     {

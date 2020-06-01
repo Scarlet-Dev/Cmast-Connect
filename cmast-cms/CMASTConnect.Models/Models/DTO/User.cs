@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CMASTConnect.DTO;
+using CMASTConnect.Models;
 
-namespace CMASTConnect.DTO.Models
+namespace CMASTConnect.Models.DTO
 {
     /// <summary>
     /// 

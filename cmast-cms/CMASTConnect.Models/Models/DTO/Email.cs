@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CMASTConnect.DataAccess.Interfaces.IServices
+namespace CMASTConnect.Models.DTO
 {
-    interface IEmailService
+    public class Email
     {
     }
 }

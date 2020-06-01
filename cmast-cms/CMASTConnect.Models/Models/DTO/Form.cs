@@ -1,10 +1,8 @@
-﻿using MongoDB.Bson;
-using MongoDB.Bson.Serialization.Attributes;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CMASTConnect.DataAccess.Models.DTO
+namespace CMASTConnect.Models.DTO
 {
     /// <summary>
     /// Basic Form Model. Will be stored in MongoDB

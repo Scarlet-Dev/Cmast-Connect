@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CMASTConnect.DTO.Models
+namespace CMASTConnect.Models.DTO
 {
-    class Post
+    public class Post
     {
+        public int Id { get; set; }
     }
 }
