@@ -1,22 +1,51 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using CMASTConnect.DTO.Models;
+using CMASTConnect.Models.DTO;
+using MySql.Data.MySqlClient;
 using MySqlConnector;
-using MongoDB.Driver;
 
 namespace CMASTConnect.DataAccess
 {
-    class CmastConnectDbConnection
+    public class CmastConnectDbConnection : IDisposable
     {
-        private CmastConnectDbConnection()
-        {
+        public readonly MySqlConnection MySql;
+        private bool disposedValue;
 
+        public CmastConnectDbConnection() : this(String.Empty) { }
+
+        public CmastConnectDbConnection(string connection)
+        {
+            MySql = new MySqlConnection(connection);
+            OpenDB();
         }
 
-        private string _DatabaseName = string.Empty;
+        private async void OpenDB()
+        {
+            await MySql.OpenAsync();
+        }
+        
 
-        
-        
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    MySql.CloseAsync();
+                }
+
+                // TODO: free unmanaged resources (unmanaged objects) and override finalizer
+                // TODO: set large fields to null
+                disposedValue = true;
+            }
+        }
+
+        public void Dispose()
+        {
+            // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
+        }
     }
 }
