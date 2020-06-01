@@ -9,11 +9,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Dapper" Version="2.0.35" />
-    <PackageReference Include="Dapper.Contrib" Version="2.0.35" />
-    <PackageReference Include="MongoDB.Driver" Version="2.10.4" />
-    <PackageReference Include="MySqlConnector" Version="0.66.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.4" />
+    <PackageReference Include="MySqlConnector" Version="0.67.0" />
+    <PackageReference Include="MySqlConnector.Logging.Serilog" Version="0.58.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CMASTConnect.Models\CMASTConnect.Models.csproj" />
   </ItemGroup>
 
 </Project>
