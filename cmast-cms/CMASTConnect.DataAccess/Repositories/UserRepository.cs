@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using CMASTConnect.Interfaces.IRepositories;
 using CMASTConnect.Models.DTO;
 using CMASTConnect.Models.Search;
@@ -11,17 +12,14 @@ namespace CMASTConnect.Repositories
     {
         private bool disposedValue;
 
-        public UserRepository()
-        {
+        public Guid OperationId => throw new NotImplementedException();
 
-        }
-
-        public void DeleteRow(int id)
+        public Task<int> DeleteRow(int id)
         {
             throw new NotImplementedException();
         }
 
-        public IList<User> Filter()
+        public Task<IList<User>> Filter(UserSearch filters)
         {
             throw new NotImplementedException();
         }
@@ -31,17 +29,22 @@ namespace CMASTConnect.Repositories
             throw new NotImplementedException();
         }
 
-        public IList<User> Query()
+        public string ResetPassword(User model)
         {
             throw new NotImplementedException();
         }
 
-        public List<User> SearchTable(string name)
+        public Task<IList<User>> SearchTable()
         {
             throw new NotImplementedException();
         }
 
-        public List<User> SearchTable(string name, int id)
+        public Task<IList<User>> SearchTable(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string UpdateProfile(User model)
         {
             throw new NotImplementedException();
         }
@@ -78,16 +81,6 @@ namespace CMASTConnect.Repositories
             // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
             Dispose(disposing: true);
             GC.SuppressFinalize(this);
-        }
-
-        public string ResetPassword(User user)
-        {
-            throw new NotImplementedException();
-        }
-
-        public string UpdateProfile(User user)
-        {
-            throw new NotImplementedException();
         }
     }
 }
