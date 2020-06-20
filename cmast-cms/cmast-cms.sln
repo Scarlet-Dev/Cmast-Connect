@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CMASTConnect.CMS", "CMASTCo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CMASTConnect.DataAccess", "CMASTConnect.DataAccess\CMASTConnect.DataAccess.csproj", "{201148EC-5376-4691-B8CA-508D5CEBB8E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMASTConnect.Models", "CMASTConnect.Models\CMASTConnect.Models.csproj", "{D51CD5AF-146A-4DDA-A3F5-1932BFAB2175}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CMASTConnect.Models", "CMASTConnect.Models\CMASTConnect.Models.csproj", "{D51CD5AF-146A-4DDA-A3F5-1932BFAB2175}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
