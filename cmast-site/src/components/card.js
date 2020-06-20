@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 const cardStyle = {}
 
-const Card = () => (
+const Card = (props) => (
     <div className="card">
         <h3>Card Name</h3>
         <Link to="/">Link</Link>
