@@ -17,6 +17,8 @@
 
   <ItemGroup>
     <Folder Include="Data\Services\" />
+    <Folder Include="Pages\CMS\Admin\" />
+    <Folder Include="Pages\CMS\Forms\" />
     <Folder Include="Pages\CMS\Posts\" />
     <Folder Include="Shared\AdminPanel\" />
   </ItemGroup>
