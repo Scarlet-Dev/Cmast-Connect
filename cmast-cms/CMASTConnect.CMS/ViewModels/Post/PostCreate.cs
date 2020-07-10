@@ -6,9 +6,17 @@ using CMASTConnect.Models.DTO;
 
 namespace CMASTConnect.CMS.ViewModels.PostVM
 {
-    public class PostCreate : Post
+    //public class PostCreate : Post
+    //{
+    //    public PostCreate () : base()
+    //    {
+
+    //    }
+    //}
+
+    public class PostCreate
     {
-        public PostCreate () : base()
+        public PostCreate()
         {
 
         }
