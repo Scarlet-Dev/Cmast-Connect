@@ -13,9 +13,9 @@ namespace CMASTConnect.CMS.Api
     public class FormsController : ControllerBase
     {
         [HttpGet]
-        public Post Get(int formId)
+        public ActionResult Get(int formId)
         {
-            return new Post();
+            return Ok();
         }
 
         [HttpPost("/saveFormData")]
