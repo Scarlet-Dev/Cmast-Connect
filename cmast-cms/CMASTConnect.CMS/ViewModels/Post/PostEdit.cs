@@ -6,9 +6,16 @@ using CMASTConnect.Models.DTO;
 
 namespace CMASTConnect.CMS.ViewModels.PostVM
 {
-    public class PostEdit : Post
+    //public class PostEdit : Post
+    //{
+    //    public PostEdit() : base()
+    //    {
+
+    //    }
+    //}
+    public class PostEdit
     {
-        public PostEdit() : base()
+        public PostEdit()
         {
 
         }
