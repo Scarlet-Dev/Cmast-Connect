@@ -33,13 +33,14 @@ namespace CMASTConnect.DataAccess.Repositories
         {
             var command = new MySqlCommand($"delete from Post where id = ${id}");
             var reader = await command.ExecuteReaderAsync();
+            int recordsReturned = 0;
 
             while (await reader.ReadAsync())
             {
-                return reader.RecordsAffected;
+                recordsReturned = reader.RecordsAffected;
             }
 
-            return 0;
+            return recordsReturned;
         }
 
         public async Task<IList<Post>> Filter(PostSearch filters)
