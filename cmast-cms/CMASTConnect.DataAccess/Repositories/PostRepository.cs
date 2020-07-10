@@ -44,9 +44,32 @@ namespace CMASTConnect.DataAccess.Repositories
 
         public async Task<IList<Post>> Filter(PostSearch filters)
         {
-            //var posts = await SearchTable();
+            var selectCmd = new MySqlCommand();
+            selectCmd.CommandType = CommandType.Text;
 
-            return null;
+            var whereClause = new MySqlCommand();
+            whereClause.CommandType = CommandType.Text;
+            
+            selectCmd.CommandText += "select * from posts limit 100";
+            whereClause.CommandText += "";
+
+            var table = new DataTable();
+            var results = new List<Post>();
+
+            var reader = await selectCmd.ExecuteReaderAsync();
+            try
+            {
+                while (await reader.ReadAsync())
+                {
+                    table.Load(reader);
+                    results.Add(table.Rows.Cast<Post>().First());
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
+            return results;
         }
 
         public void InsertRow(Post model)
