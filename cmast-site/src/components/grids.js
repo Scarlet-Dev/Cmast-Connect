@@ -1,6 +1,6 @@
 import React from "react";
 
-const BasicGrid = () => (
+export const BasicGrid = () => (
     <div>
         <div>
             <p>Items Here.</p>
@@ -16,4 +16,3 @@ export const AdvancedGrid = () => (
     </div>
 )
 
-export default BasicGrid
