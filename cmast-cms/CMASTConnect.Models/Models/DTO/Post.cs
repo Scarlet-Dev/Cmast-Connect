@@ -16,6 +16,8 @@ namespace CMASTConnect.Models.DTO
 
         public string Author { get; }
 
+        public bool IsPublished { get; }
+
         public DateTime PublishedDate { get; }
 
         public string UpdatedBy { get; }
@@ -23,12 +25,13 @@ namespace CMASTConnect.Models.DTO
         public DateTime UpdatedOn { get; }
         
         public Post(int id, string title, string[] category, string author, 
-            DateTime publishedDate, string updatedBy, DateTime updatedOn)
+            bool isPublished, DateTime publishedDate, string updatedBy, DateTime updatedOn)
         {
             Id = id;
             Title = title;
             Category = category;
             Author = author;
+            IsPublished = isPublished;
             PublishedDate = publishedDate;
             UpdatedBy = updatedBy;
             UpdatedOn = updatedOn;
