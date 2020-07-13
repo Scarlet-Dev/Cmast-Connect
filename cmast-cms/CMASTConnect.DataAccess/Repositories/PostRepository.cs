@@ -12,11 +12,11 @@ using System.Threading.Tasks;
 
 namespace CMASTConnect.DataAccess.Repositories
 {
-
     public class PostRepository : IPostRepository<Post, PostSearch>
     {
         private Guid _guid;
         private bool disposedValue;
+        public string CurrentUsername;
 
         public Guid OperationId => _guid;
 
@@ -24,11 +24,20 @@ namespace CMASTConnect.DataAccess.Repositories
         {
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="guid"></param>
         public PostRepository(Guid guid)
         {
             this._guid = guid;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<int> DeleteRow(int id)
         {
             var command = new MySqlCommand($"delete from Post where id = ${id}");
@@ -43,6 +52,11 @@ namespace CMASTConnect.DataAccess.Repositories
             return recordsReturned;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="filters"></param>
+        /// <returns></returns>
         public async Task<IList<Post>> Filter(PostSearch filters)
         {
             var selectCmd = new MySqlCommand();
@@ -73,16 +87,47 @@ namespace CMASTConnect.DataAccess.Repositories
             return results;
         }
 
-        public void InsertRow(Post model)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public async Task<int> InsertRow(Post model)
         {
-            throw new NotImplementedException();
+            var insertStmt = "insert into (title, category, " +
+               "author, isPublished, publishedDate, updatedBy, " +
+               "updatedOn) into";
+            //Need to figure out how to auto increment id.
+            var values = $"(${model.Title}, ${model.Category}, ${model.Author}," +
+                $"${model.IsPublished}, ${model.PublishedDate}, ${model.UpdatedBy}" +
+                $"${model.UpdatedOn});";
+
+            var insertCommand = new MySqlCommand(String.Join(" ",
+                insertStmt, values));
+
+            var reader = await insertCommand.ExecuteReaderAsync();
+            int recordsReturned = 0;
+
+            while (await reader.ReadAsync())
+            {
+                recordsReturned = reader.RecordsAffected;
+            }
+            return recordsReturned;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public IList<Post> Join()
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public async Task<IList<Post>> SearchTable()
         {
             var results = new List<Post>();
@@ -98,6 +143,11 @@ namespace CMASTConnect.DataAccess.Repositories
             return results;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IList<Post>> SearchTable(int id)
         {
             var posts = await SearchTable();
@@ -108,19 +158,69 @@ namespace CMASTConnect.DataAccess.Repositories
             return results;
         }
 
-        public void UpdateRow(int id, Post model)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public async Task<int> UpdateRow(int id, Post model)
         {
-            throw new NotImplementedException();
+            //Finish update statement
+            string updateStmt = "update post";
+            string set = "set ";
+            return 0;
         }
 
-        public string PublishPost(Post post)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="postId"></param>
+        /// <returns></returns>
+        public async Task<int> PublishPost(int postId)
         {
-            throw new NotImplementedException();
+            string updateStmt = "update post";
+            string set = "set isPublished = 1" +
+                $"publishedDate = ${DateTime.UtcNow}," +
+                $"updatedBy = ${CurrentUsername}," +
+                $"updatedOn = ${DateTime.UtcNow}";
+            string where = $"where id = ${postId};";
+
+            var publishCommand = new MySqlCommand(String.Join(" ", updateStmt, set, where));
+            var reader = await publishCommand.ExecuteReaderAsync();
+            int recordsReturned = 0;
+
+            while (await reader.ReadAsync())
+            {
+                recordsReturned = reader.RecordsAffected;
+            }
+
+            return recordsReturned;
         }
 
-        public string UnPublishPost(Post post)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="postId"></param>
+        /// <returns></returns>
+        public async Task<int> UnPublishPost(int postId)
         {
-            throw new NotImplementedException();
+            string updateStmt = "update post";
+            string set = "set isPublished = 0, update," +
+                $"updatedBy = ${CurrentUsername}," +
+                $"updatedOn = ${DateTime.UtcNow}";
+            string where = $"where id = ${postId};";
+
+            var publishCommand = new MySqlCommand(String.Join(" ", updateStmt, set, where));
+            var reader = await publishCommand.ExecuteReaderAsync();
+            int recordsReturned = 0;
+
+            while (await reader.ReadAsync())
+            {
+                recordsReturned = reader.RecordsAffected;
+            }
+
+            return recordsReturned;
         }
 
         protected virtual void Dispose(bool disposing)
