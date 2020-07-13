@@ -1,14 +1,17 @@
 ﻿using CMASTConnect.Interfaces.IRepositories;
 using CMASTConnect.Models.DTO;
 using CMASTConnect.Models.Models.Search;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace CMASTConnect.DataAccess.Repositories
 {
-    class FormRepository : IFormRepository<Form, FormSearch>
+    public class FormRepository : IFormRepository<Form, FormSearch>
     {
         private bool disposedValue;
 
@@ -24,32 +27,47 @@ namespace CMASTConnect.DataAccess.Repositories
             throw new NotImplementedException();
         }
 
-        public void InsertRow(Form model)
+        public Task<int> InsertRow(Form model)
         {
             throw new NotImplementedException();
         }
 
-        public string PublishForm(Form model)
+        public Task<int> PublishForm(int formId)
         {
             throw new NotImplementedException();
         }
 
-        public Task<IList<Form>> SearchTable()
+        public async Task<IList<Form>> SearchTable()
+        {
+            var selectCommand = new MySqlCommand("");
+            var reader = await selectCommand.ExecuteReaderAsync();
+
+            var table = new DataTable();
+            var results = new List<Form>();
+            while(await reader.ReadAsync())
+            {
+                table.Load(reader);
+                results.Add(table.Rows.Cast<Form>().First());
+            }
+            return results;
+        }
+
+        public async Task<IList<Form>> SearchTable(int id)
+        {
+            var forms = await SearchTable();
+            var query = forms.Where(item => item.Id == id);
+
+            var results = new List<Form>(query);
+
+            return results;
+        }
+
+        public Task<int> UnPublishForm(int formId)
         {
             throw new NotImplementedException();
         }
 
-        public Task<IList<Form>> SearchTable(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public string UnPublishForm(Form model)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateRow(int id, Form model)
+        public Task<int> UpdateRow(int id, Form model)
         {
             throw new NotImplementedException();
         }
