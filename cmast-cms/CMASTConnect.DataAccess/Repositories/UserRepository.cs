@@ -24,7 +24,7 @@ namespace CMASTConnect.Repositories
             throw new NotImplementedException();
         }
 
-        public void InsertRow(User model)
+        public async Task<int> InsertRow(User model)
         {
             throw new NotImplementedException();
         }
@@ -49,7 +49,7 @@ namespace CMASTConnect.Repositories
             throw new NotImplementedException();
         }
 
-        public void UpdateRow(int id, User model)
+        public async Task<int> UpdateRow(int id, User model)
         {
             throw new NotImplementedException();
         }
