@@ -12,9 +12,9 @@ namespace CMASTConnect.Interfaces
 
         Task<IList<T>> SearchTable(int id);
 
-        void InsertRow(T model);
+        Task<int> InsertRow(T model);
 
-        void UpdateRow(int id, T model);
+        Task<int> UpdateRow(int id, T model);
 
         Task<int> DeleteRow(int id);
     }
