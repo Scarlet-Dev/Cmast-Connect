@@ -1,9 +1,11 @@
-﻿namespace CMASTConnect.Interfaces.IRepositories
+﻿using System.Threading.Tasks;
+
+namespace CMASTConnect.Interfaces.IRepositories
 {
     public interface IFormRepository<F, Fs>: IRepositoryBase<F>, IQueryRepoBase<F, Fs>
     {
-        string PublishForm(F model);
+        Task<int> PublishForm(int id);
 
-        string UnPublishForm(F model);
+        Task<int> UnPublishForm(int id);
     }
 }
