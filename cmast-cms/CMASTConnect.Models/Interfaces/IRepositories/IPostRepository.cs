@@ -1,9 +1,11 @@
-﻿namespace CMASTConnect.Interfaces.IRepositories
+﻿using System.Threading.Tasks;
+
+namespace CMASTConnect.Interfaces.IRepositories
 {
     public interface IPostRepository<P, Ps>: IRepositoryBase<P>, IQueryRepoBase<P,Ps>
     {
-        string PublishPost(P model);
+        Task<int> PublishPost(int id);
 
-        string UnPublishPost(P model);
+        Task<int> UnPublishPost(int id);
     }
 }
