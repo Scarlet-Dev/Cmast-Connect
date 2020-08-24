@@ -22,7 +22,7 @@ namespace CMASTConnect.DataAccess
 
         private async void OpenDB()
         {
-            await MySql.OpenAsync();
+            //await MySql.OpenAsync();
         }
         
 
