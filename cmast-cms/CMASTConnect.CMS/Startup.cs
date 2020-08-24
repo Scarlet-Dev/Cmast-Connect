@@ -26,7 +26,7 @@ namespace CMASTConnect.CMS
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton(new CmastConnectDbConnection(Configuration["ConnectionStrings:Default"]));
+            //services.AddSingleton(new CmastConnectDbConnection(Configuration["ConnectionStrings:Default"]));
             services.AddMvcCore(options => options.EnableEndpointRouting = false);
             services.AddRazorPages();
             services.AddServerSideBlazor();
