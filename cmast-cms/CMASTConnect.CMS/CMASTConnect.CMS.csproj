@@ -5,6 +5,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Pages\CMS\Admin\**" />
+    <Compile Remove="Pages\CMS\Forms\**" />
+    <Compile Remove="Pages\CMS\Posts\**" />
+    <Content Remove="Pages\CMS\Admin\**" />
+    <Content Remove="Pages\CMS\Forms\**" />
+    <Content Remove="Pages\CMS\Posts\**" />
+    <EmbeddedResource Remove="Pages\CMS\Admin\**" />
+    <EmbeddedResource Remove="Pages\CMS\Forms\**" />
+    <EmbeddedResource Remove="Pages\CMS\Posts\**" />
+    <None Remove="Pages\CMS\Admin\**" />
+    <None Remove="Pages\CMS\Forms\**" />
+    <None Remove="Pages\CMS\Posts\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.3" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="Serilog.AspNetCore" Version="3.2.0" />
@@ -17,10 +32,6 @@
 
   <ItemGroup>
     <Folder Include="Data\Services\" />
-    <Folder Include="Pages\CMS\Admin\" />
-    <Folder Include="Pages\CMS\Forms\" />
-    <Folder Include="Pages\CMS\Posts\" />
-    <Folder Include="Shared\AdminPanel\" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties appsettings_1development_1json__JsonSchema="https://json.schemastore.org/appsettings" /></VisualStudio></ProjectExtensions>
