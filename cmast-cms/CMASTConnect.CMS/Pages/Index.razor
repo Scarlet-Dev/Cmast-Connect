@@ -5,14 +5,15 @@
         <DataAnnotationsValidator />
         <ValidationSummary />
         <div class="form-group form-row">
-            <InputText class="form-control" @bind-Value="@userLogin.Username"></InputText>
+            <InputText type="text" class="form-control" placeholder="Username" @bind-Value="@userLogin.Username"></InputText>
         </div>
         <div class="form-group form-row">
-            <InputText type="password" placeholder="Enter your Password" class="form-control" @bind-Value="@userLogin.Password"></InputText>
+            <InputText type="password" placeholder="Password" class="form-control" @bind-Value="@userLogin.Password"></InputText>
         </div>
         <div class="form-group form-row">
             <label>
-                <InputCheckbox class="form-check" @bind-Value="@userLogin.StayLoggedIn">Stay Logged In?</InputCheckbox>
+                <InputCheckbox class="form-check" @bind-Value="@userLogin.StayLoggedIn"></InputCheckbox>
+                Stay Logged In?
             </label>
         </div>
         <div>
